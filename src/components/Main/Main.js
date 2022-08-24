@@ -6,17 +6,22 @@ function Main() {
 
     const dispatch = useDispatch();
     const countries = useSelector(state => state.covid.countries);
-    console.log(countries)
-    
+    const globalData = useSelector(state => state.covid.globalData);
+
+    console.log("countries", countries)
+    console.log("globalData", globalData)
+
 
     useEffect(() => {
-       dispatch(fetchData())
-       dispatch(fetchDataCountries())
+        dispatch(fetchData())
+        dispatch(fetchDataCountries())
     }, [])
 
 
     return (
         <div>
+            {countries &&
+                countries.countries.map((country) => <p>{country.name}</p>)}
         </div>
     )
 }
