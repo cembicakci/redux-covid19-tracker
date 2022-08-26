@@ -21,24 +21,29 @@ header > p{
 
 .infected{
   background-color: rgba(102,179,255,.5);
+  border-bottom: 10px solid rgba(0,0,255,.5);
 }
 
 .recovered{
   background-color: rgba(191,242,202,.5);
+  border-bottom: 10px solid rgba(0,255,0,.5);
 }
 
 .death{
   background-color: rgba(237,178,178,.5)!important;
+  border-bottom: 10px solid rgba(255,0,0,.5);
 }
 
 .active{
   background-color: rgba(237,199,152,.5);
+  border-bottom: 10px solid rgba(242,234,0,.5);
 }
 
 .main-box{
   padding: 30px;
   margin: 0 20px 30px 20px;
   text-align: left;
+  border-radius: 6px;
 }
 
 .main-box-value{
@@ -47,10 +52,14 @@ header > p{
 }
 
 .main-box span{
-  color: rgba(0, 0, 0, 0.54);
+  font-size: 24px;
+}
+
+.main-box-date{
   font-size: 14px;
   margin: 5px 0;
-  display: inline-block;
+  color: rgba(0, 0, 0, 0.54);
+
 }
 
 .main-box p{

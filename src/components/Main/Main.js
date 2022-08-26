@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { fetchData, fetchDataCountries } from '../../redux/covidSlice'
 import { useDispatch, useSelector } from 'react-redux'
+import CountUp from "react-countup";
 
 function Main() {
 
@@ -34,34 +35,50 @@ function Main() {
                 <div className='main-details'>
                     <div className='main-box infected'>
                         <h3>Infected</h3>
-                        <p className='main-box-value'>{globalData.confirmed.value}</p>
-                        <p>Last Updated at :</p>
-                        <span>{ new Date(globalData.lastUpdate).toLocaleString()}</span>
-                        <p className='main-box-desc'>Number of infect cases of COVID-19</p>
+                        <p className='main-box-value'>
+                            <CountUp start={0} end={globalData.confirmed.value} duration={1} separator="," className='text-3xl ld:text-5xl py-10' />
+                        </p>
+                        <div>
+                            <p>Last Updated at :</p>
+                            <p className='main-box-date'>{new Date(globalData.lastUpdate).toLocaleString()}</p>
+                            <p className='main-box-desc'>Number of infect cases of COVID-19</p>
+                        </div>
                     </div>
 
                     <div className='main-box recovered'>
                         <h3>Recovered</h3>
-                        <p className='main-box-value'>{globalData.recovered.value}</p>
-                        <p>Last Updated at :</p>
-                        <span>{ new Date(globalData.lastUpdate).toLocaleString()}</span>
-                        <p className='main-box-desc'>Number of recoveries from COVID-19</p>
+                        <p className='main-box-value'>
+                            <CountUp start={0} end={globalData.recovered.value} duration={1} separator="," className='text-3xl ld:text-5xl py-10' />
+                        </p>
+                        <div>
+                            <p>Last Updated at :</p>
+                            <p className='main-box-date'>{new Date(globalData.lastUpdate).toLocaleString()}</p>
+                            <p className='main-box-desc'>Number of recoveries from COVID-19</p>
+                        </div>
                     </div>
 
                     <div className='main-box death'>
                         <h3>Deaths</h3>
-                        <p className='main-box-value'>{globalData.deaths.value}</p>
-                        <p>Last Updated at :</p>
-                        <span>{ new Date(globalData.lastUpdate).toLocaleString()}</span>
-                        <p className='main-box-desc'>Number of deaths caused by COVID-19</p>
+                        <p className='main-box-value'>
+                            <CountUp start={0} end={globalData.deaths.value} duration={1} separator="," className='text-3xl ld:text-5xl py-10' />
+                        </p>
+                        <div>
+                            <p>Last Updated at :</p>
+                            <p className='main-box-date'>{new Date(globalData.lastUpdate).toLocaleString()}</p>
+                            <p className='main-box-desc'>Number of deaths caused by COVID-19</p>
+                        </div>
                     </div>
 
                     <div className='main-box active'>
                         <h3>Active</h3>
-                        <p className='main-box-value'>{globalData.confirmed.value - globalData.deaths.value}</p>
-                        <p>Last Updated at :</p>
-                        <span>{ new Date(globalData.lastUpdate).toLocaleString()}</span>
-                        <p className='main-box-desc'>Number of active cases of COVID-19</p>
+                        <p className='main-box-value'>
+                            <CountUp start={0} end={globalData.confirmed.value - globalData.deaths.value} duration={1} separator="," className='text-3xl ld:text-5xl py-10' />
+                        </p>
+                        <div>
+                            <p>Last Updated at :</p>
+                            <p className='main-box-date'>{new Date(globalData.lastUpdate).toLocaleString()}</p>
+                            <p className='main-box-desc'>Number of active cases of COVID-19</p>
+                        </div>
                     </div>
 
                 </div>
