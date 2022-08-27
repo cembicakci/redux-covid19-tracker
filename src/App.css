@@ -20,7 +20,7 @@ header > p{
 }
 
 .infected{
-  background-color: rgba(102,179,255,.5);
+  background-color: rgba(102, 179, 255, 0.5);
   border-bottom: 10px solid rgba(0,0,255,.5);
 }
 

@@ -3,6 +3,62 @@ import { fetchData, fetchDataCountries } from '../../redux/covidSlice'
 import { setSelectedCountry } from '../../redux/covidSlice';
 import { useDispatch, useSelector } from 'react-redux'
 import CountUp from "react-countup";
+import { Bar } from "react-chartjs-2";
+
+import {
+    Chart,
+    ArcElement,
+    LineElement,
+    BarElement,
+    PointElement,
+    BarController,
+    BubbleController,
+    DoughnutController,
+    LineController,
+    PieController,
+    PolarAreaController,
+    RadarController,
+    ScatterController,
+    CategoryScale,
+    LinearScale,
+    LogarithmicScale,
+    RadialLinearScale,
+    TimeScale,
+    TimeSeriesScale,
+    Decimation,
+    Filler,
+    Legend,
+    Title,
+    Tooltip,
+} from "chart.js";
+
+Chart.register(
+    ArcElement,
+    LineElement,
+    BarElement,
+    PointElement,
+    BarController,
+    BubbleController,
+    DoughnutController,
+    LineController,
+    PieController,
+    PolarAreaController,
+    RadarController,
+    ScatterController,
+    CategoryScale,
+    LinearScale,
+    LogarithmicScale,
+    RadialLinearScale,
+    TimeScale,
+    TimeSeriesScale,
+    Decimation,
+    Filler,
+    Legend,
+    Title,
+    Tooltip
+);
+
+
 
 function Main() {
 
@@ -20,7 +76,7 @@ function Main() {
     function handleCountries(e) {
         dispatch(setSelectedCountry(e.target.value))
         dispatch(fetchData(e.target.value))
-        
+
     }
 
 
@@ -91,6 +147,32 @@ function Main() {
 
                 </select>
             </div>
+
+
+            {/* chart js */}
+            <div>
+                <p>Current state in {selectedCountry}</p>
+                {
+                    covidData ? (<Bar data={{
+                        labels: ["Infected", "Recovered", "Deaths", "Active"],
+                        datasets:
+                            [{
+                                label: "People",
+                                backgroundColor: ["rgba(102, 179, 255, 0.5)", "rgba(191,242,202,.5)", "rgba(237,178,178,.5)", "rgba(237,199,152,.5)"],
+                                hoverBackgroundColor: ["rgba(0,0,255,.5)", "rgba(0,255,0,.5)", "rgba(255,0,0,.5)", "rgba(242,234,0,.5)"],
+                                data: [covidData.confirmed.value,
+                                covidData.recovered.value,
+                                covidData.deaths.value,
+                                covidData.confirmed.value - covidData.deaths.value]
+                            }]
+                    }}
+                        className="max-w-3xl max-h-96 m-4"
+                    />) : null
+
+
+                }
+            </div>
+
         </div>
     )
 }
