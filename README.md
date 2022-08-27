@@ -15,7 +15,7 @@ Live: https://cembicakci.github.io/redux-covid19-tracker/
 ## Features
 * You can select any country and see the results on chart
 
-## API
+## Api
 ```
 https://covid19.mathdro.id/api
 ```
