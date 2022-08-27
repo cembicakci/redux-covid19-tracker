@@ -3,7 +3,7 @@ import { fetchData, fetchDataCountries } from '../../redux/covidSlice'
 import { setSelectedCountry } from '../../redux/covidSlice';
 import { useDispatch, useSelector } from 'react-redux'
 import CountUp from "react-countup";
-import { Bar } from "react-chartjs-2";
+import { Bar, Line } from "react-chartjs-2";
 
 import {
     Chart,
@@ -74,8 +74,13 @@ function Main() {
 
 
     function handleCountries(e) {
-        dispatch(setSelectedCountry(e.target.value))
-        dispatch(fetchData(e.target.value))
+        if (e.target.value === 'Global') {
+            dispatch(fetchData(''))
+            dispatch(setSelectedCountry(''))
+        } else {
+            dispatch(fetchData(e.target.value))
+            dispatch(setSelectedCountry(e.target.value))
+        }
 
     }
 
@@ -151,26 +156,53 @@ function Main() {
 
             {/* chart js */}
             <div>
-                <p>Current state in {selectedCountry}</p>
                 {
-                    covidData ? (<Bar data={{
-                        labels: ["Infected", "Recovered", "Deaths", "Active"],
-                        datasets:
-                            [{
-                                label: "People",
-                                backgroundColor: ["rgba(102, 179, 255, 0.5)", "rgba(191,242,202,.5)", "rgba(237,178,178,.5)", "rgba(237,199,152,.5)"],
-                                hoverBackgroundColor: ["rgba(0,0,255,.5)", "rgba(0,255,0,.5)", "rgba(255,0,0,.5)", "rgba(242,234,0,.5)"],
-                                data: [covidData.confirmed.value,
-                                covidData.recovered.value,
-                                covidData.deaths.value,
-                                covidData.confirmed.value - covidData.deaths.value]
-                            }]
-                    }}
-                        className="max-w-3xl max-h-96 m-4"
-                    />) : null
+                    selectedCountry &&
+                    <div>
+                        <p>Current state in {selectedCountry}</p>
+                        {
+                            covidData ? (<Bar data={{
+                                labels: ["Infected", "Recovered", "Deaths", "Active"],
+                                datasets:
+                                    [{
+                                        label: "People",
+                                        backgroundColor: ["rgba(102, 179, 255, 0.5)", "rgba(191,242,202,.5)", "rgba(237,178,178,.5)", "rgba(237,199,152,.5)"],
+                                        hoverBackgroundColor: ["rgba(0,0,255,.5)", "rgba(0,255,0,.5)", "rgba(255,0,0,.5)", "rgba(242,234,0,.5)"],
+                                        data: [covidData.confirmed.value,
+                                        covidData.recovered.value,
+                                        covidData.deaths.value,
+                                        covidData.confirmed.value - covidData.deaths.value]
+                                    }]
+                            }}
+                            />) : null
 
 
+                        }
+                    </div>
                 }
+
+                <p className='text-2xl mt-5'>Daily Global Cases</p>
+                {
+                    !selectedCountry && (
+                        <Line data={{
+                            labels: 'labels',
+                            datasets: [
+                                {
+
+                                    label: "Infected",
+                                    backgroundColor: "blue",
+                                },
+                                {
+
+                                    label: "Deaths",
+                                    backgroundColor: "red",
+                                }],
+                        }}
+                        />
+                    )
+                }
+
+
             </div>
 
         </div>
