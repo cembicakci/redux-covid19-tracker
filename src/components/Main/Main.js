@@ -66,9 +66,10 @@ function Main() {
     const countries = useSelector(state => state.covid.countries);
     const covidData = useSelector(state => state.covid.covidData);
     const selectedCountry = useSelector(state => state.covid.selectedCountry);
+    const dailyData = useSelector(state => state.covid.dailyData);
 
     useEffect(() => {
-        dispatch(fetchData(selectedCountry))
+        dispatch(fetchData(''))
         dispatch(fetchDataCountries())
         dispatch(fetchDataDaily())
     }, [])
@@ -76,13 +77,21 @@ function Main() {
 
     function handleCountries(e) {
         if (e.target.value === 'Global') {
-            dispatch(fetchData(''))
+            dispatch(fetchData(selectedCountry))
             dispatch(setSelectedCountry(''))
         } else {
             dispatch(fetchData(e.target.value))
             dispatch(setSelectedCountry(e.target.value))
         }
 
+    }
+
+    let labels = [], infected = [], deaths = [];
+
+    if (dailyData !== "") {
+        labels = dailyData.map((item) => item.reportDate);
+        infected = dailyData.map((item) => item.totalConfirmed);
+        deaths = dailyData.map((item) => item.deaths.total);
     }
 
 
@@ -156,7 +165,7 @@ function Main() {
 
 
             {/* chart js */}
-            <div>
+            <div className='chart'>
                 {
                     selectedCountry &&
                     <div>
@@ -186,15 +195,15 @@ function Main() {
                 {
                     !selectedCountry && (
                         <Line data={{
-                            labels: 'labels',
+                            labels: labels,
                             datasets: [
                                 {
-                                    
+                                    data: infected,
                                     label: "Infected",
                                     backgroundColor: "blue",
                                 },
                                 {
-
+                                    data: deaths,
                                     label: "Deaths",
                                     backgroundColor: "red",
                                 }],
