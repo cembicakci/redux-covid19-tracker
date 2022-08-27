@@ -191,7 +191,6 @@ function Main() {
                     </div>
                 }
 
-                <p className='text-2xl mt-5'>Daily Global Cases</p>
                 {
                     !selectedCountry && (
                         <Line data={{

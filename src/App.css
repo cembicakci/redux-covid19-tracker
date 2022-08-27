@@ -72,3 +72,7 @@ header > p{
 .main select:focus{
   outline: none;
 }
+
+.chart{
+  margin: 50px 0;
+}
