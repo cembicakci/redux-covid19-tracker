@@ -5,7 +5,7 @@
 }
 
 header{
-  margin: 60px;
+  margin: 60px 0;
 }
 
 header > p{
@@ -17,6 +17,7 @@ header > p{
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 30px;
 }
 
 .infected{
@@ -41,7 +42,7 @@ header > p{
 
 .main-box{
   padding: 30px;
-  margin: 0 20px 30px 20px;
+  margin: 0 10px;
   text-align: left;
   border-radius: 6px;
 }
@@ -122,4 +123,26 @@ footer ul .gmail:hover a{
 
 footer ul .twitter:hover a{
   color: rgb(29, 161, 242);
+}
+
+
+@media only screen and (max-width: 900px) {
+
+  header{
+    margin: 20px 0;
+  }
+
+  header img{
+    width: 70%;
+  }
+
+  .main-details{
+    flex-direction: column;
+  }
+
+  .main-box{
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
 }
