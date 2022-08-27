@@ -77,7 +77,7 @@ function Main() {
 
     function handleCountries(e) {
         if (e.target.value === 'Global') {
-            dispatch(fetchData(selectedCountry))
+            dispatch(fetchData(''))
             dispatch(setSelectedCountry(''))
         } else {
             dispatch(fetchData(e.target.value))

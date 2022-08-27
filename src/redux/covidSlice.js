@@ -7,7 +7,6 @@ export const fetchData = createAsyncThunk('data/fetchData', async (selectedCount
         return res.data
     } else {
         const res = await axios(`https://covid19.mathdro.id/api/countries/${selectedCountry}`);
-        console.log(res.data)
         return res.data
     }
 })
@@ -19,7 +18,6 @@ export const fetchDataCountries = createAsyncThunk('data/fetchDataCountries', as
 
 export const fetchDataDaily = createAsyncThunk("covidData/fetchDataDaily", async () => {
     const res = await axios("https://covid19.mathdro.id/api/daily");
-    console.log('data :>> ', res.data);
     return res.data;
 })
 
