@@ -76,3 +76,50 @@ header > p{
 .chart{
   margin: 50px 0;
 }
+
+footer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin: 50px 0;
+
+}
+
+footer a{
+  text-decoration: none;
+  color: rgba(0, 0, 255, 0.6);
+
+}
+
+footer ul{
+  display: flex;
+  margin: 20px 0;
+}
+
+footer ul li{
+  list-style-type: none;
+  margin-right: 20px;
+}
+
+footer ul li a{
+  color: rgb(204, 204, 204);
+  font-size: 46px;
+}
+
+
+footer ul .linkedin:hover a{
+  color: rgb(72, 117, 180);
+}
+
+footer ul .github:hover a{
+  color: rgb(0, 0, 0);
+}
+
+footer ul .gmail:hover a{
+  color: rgb(212, 70, 56);
+}
+
+footer ul .twitter:hover a{
+  color: rgb(29, 161, 242);
+}
