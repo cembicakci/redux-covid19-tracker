@@ -17,12 +17,19 @@ export const fetchDataCountries = createAsyncThunk('data/fetchDataCountries', as
     return res.data
 })
 
+export const fetchDataDaily = createAsyncThunk("covidData/fetchDataDaily", async () => {
+    const res = await axios("https://covid19.mathdro.id/api/daily");
+    console.log('data :>> ', res.data);
+    return res.data;
+})
+
 export const covidSlice = createSlice({
     name: 'covid',
     initialState: {
         covidData: '',
         countries: '',
-        selectedCountry: ''
+        selectedCountry: '',
+        dailyData: ''
     },
     reducers: {
         setSelectedCountry: (state, action) => {
@@ -35,6 +42,9 @@ export const covidSlice = createSlice({
         },
         [fetchDataCountries.fulfilled]: (state, action) => {
             state.countries = action.payload;
+        },
+        [fetchDataDaily.fulfilled] : (state, action) => {
+            state.dailyData = action.payload;
         }
     }
 })

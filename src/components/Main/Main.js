@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { fetchData, fetchDataCountries } from '../../redux/covidSlice'
+import { fetchData, fetchDataCountries, fetchDataDaily } from '../../redux/covidSlice'
 import { setSelectedCountry } from '../../redux/covidSlice';
 import { useDispatch, useSelector } from 'react-redux'
 import CountUp from "react-countup";
@@ -70,6 +70,7 @@ function Main() {
     useEffect(() => {
         dispatch(fetchData(selectedCountry))
         dispatch(fetchDataCountries())
+        dispatch(fetchDataDaily())
     }, [])
 
 
@@ -188,7 +189,7 @@ function Main() {
                             labels: 'labels',
                             datasets: [
                                 {
-
+                                    
                                     label: "Infected",
                                     backgroundColor: "blue",
                                 },
