@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/redux-covid19-tracker/static/css/main.5636a0b2.css",
+    "main.js": "/redux-covid19-tracker/static/js/main.62aadf03.js",
+    "index.html": "/redux-covid19-tracker/index.html",
+    "main.5636a0b2.css.map": "/redux-covid19-tracker/static/css/main.5636a0b2.css.map",
+    "main.62aadf03.js.map": "/redux-covid19-tracker/static/js/main.62aadf03.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5636a0b2.css",
+    "static/js/main.62aadf03.js"
+  ]
+}
